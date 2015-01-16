@@ -2,15 +2,6 @@
 https://github.com/comp346/W15
 
 ---
-# Objectives
-
-- Explain the specification
-- Multiple threading
-- Issues without Synchronization
-- Simple solution
-
-
----
 # Setup
 1. Create a new project
 2. Extract the provided file
@@ -36,7 +27,7 @@ Account Number, Name & Balance. Balance can be changed.
 ---
 # Account Skeleton
 ```java
-class Account {
+public class Account {
     private int accountID;
     private String name;
     private double balance;
@@ -52,7 +43,7 @@ class Account {
 
 ---
 # Inheritance
-Dove can inherit general properties of a bird: fly, eat ...
+A dove can inherit general properties and behaviors of a bird: fly, eat ...
 
 ```java
 public class Dove extends Bird {
@@ -70,7 +61,7 @@ public class Bird extends Animal {
 ---
 # Hierrachy
 
-Every class in java either is inherited directly or indirectly  from `Object`
+Every class in java is inherited either directly or indirectly  from `Object`. If a class is declared without an explicit parent, its parent is Object. 
 
 ---
 **Thread** is an execution that executes a **given task** concurrently with other threads.
