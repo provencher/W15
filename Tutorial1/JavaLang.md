@@ -1,6 +1,6 @@
 # Tutorial 1
 
-https://github.com/comp346/W15
+### https://github.com/comp346/W15
 
 ---
 # Objective
@@ -229,6 +229,13 @@ int g1 = grades[0];
 ```
 - Indexing starts from **0**
 - Multiple dimension array
+
+---
+# Recommendations
+1. Digesting Java quickly
+2. Using IDE to develop (learn its shortcut keys)
+3. Be familiar with command line
+4. Start using version control (git)
 
 ---
 # Sources
