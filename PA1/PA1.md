@@ -209,14 +209,32 @@ public class UnsafeSequence {
 ![fit right](unsafe.png)
 
 ---
-# Synchronized (Intrinsic Lock)
-Only one thread is allowed to enter a method or a block of statements.
+# Intrinsic Lock
+Only one thread is allowed to enter a block of statements.
+
+Syntax:
+
+```java
+synchronized (lockedObject) {
+    //Operation
+}
+```
+
+---
+# Shorthand
+Synchronized method is a shorthand of a synchronized block.
+getNextA() equivalent to getNextB()
 
 ```java
 public class SynchronizedSequence {
     private int value;
-    public synchronized int getNext() {
+    public synchronized int getNextA() {
         return value++;
+    }
+    public int getNextB() {
+        synchronized(this){
+            return value++;
+        }
     }
 }
 ```

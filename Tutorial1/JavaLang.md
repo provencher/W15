@@ -51,7 +51,7 @@ public class HelloWorld {
 ---
 # Toolkits
 - Free to choose operating system (**GNU/Linux, OSX**, Windows)
-- IDEs : Intellij, Eclipse, Netbean
+- IDEs : Intellij, Eclipse, Netbeans
 - Editors: Sublime Text, Vim, Emacs, Atom, ...
 
 ### Recommend to do assignment on your own machine
@@ -77,7 +77,7 @@ public class HelloWorld {
 # Class
 
 - Fields are properties of instance
-- Methods are behaviours
+- Methods are behaviors
 - Constructors are used to initialized instances
 - Static vs Instance
 
