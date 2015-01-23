@@ -6,28 +6,49 @@
 2. Thread
 
 ---
+# [fit] Process often means application
+
+---
+![fit left](TaskManager.png)
+
+![fit right](processes.png)
+
+---
+
+Most of applications are single process
+
+Multiple processes application: Chrome
+
+![fit right](https://www.youtube.com/watch?v=29e0CtgXZSI#t=15)
+
+---
 # Process
-1. Self-contained environment:
-    - Virtual address space
-    - Executable code
-    - Privileges
-    - Resources (files, sockets)
-2. Most of applications are single process
-3. Multiple processes application: Chrome
+Self-contained excution environment
+- Virtual address space
+- Executable code
+- Privileges
+- Resources (files, sockets)
 
 ---
 # Process States
 ![inline](http://bit.ly/1xGeaEP)
 
 ---
+# Create Process
+- Path to application
+- Application arguments
+- Environment variables
+- Privileges (access rights)
+
+---
 ## Inter Process Communication
 - Socket
 - Shared Memory
-- Pipe 
+- Pipe / Unix Socket
 
 ---
 # Multithreaded Process
-![inline](http://goo.gl/oYzxUx)
+![inline](ThreadModel.png)
 
 ---
 # Thread State
