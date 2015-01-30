@@ -92,24 +92,6 @@ import java.util.concurrent.locks.*;
 
 # [fit] What happen if only one mutex is used?
 ---
-# What's wrong?
-```java
-public class Queue {
-  private int[] es = new int[10];
-  private int index = 0;
-  private final Object lockArray = new Object();
-  private final Object lockIndex = new Object();
-
-  public void enqueue(int e) {
-    synchronized(lockArray) {
-      es[index] = e;
-    }
-    synchronized(lockIndex) {
-      index = index + 1;
-    }
-  }
-}
-```
 
 
 
