@@ -21,7 +21,7 @@ public class UnsafeSequence {
 - Thread A & B call getNext
 - Duplicated ID
 
-![fit right](unsafe.png)
+![fit right](img/unsafe.png)
 
 ---
 # Check and act
@@ -121,14 +121,20 @@ One thread can acquire the same lock many times.
 ---
 ## Synchronized is a bad design
 
-![inline](intrinsic.png)
+![inline](img/intrinsic.png)
 
 --
-![inline](comment.png)
+![inline](img/comment.png)
 
 > Brian Goetz - Java Language Architect at Oracle
 
 ---
+# Visibility
+
+In the Java memory model, each processor is allowed to cache values in its L1 or L2 cache so two threads running on different processors can each have their own view of data.
+
+---
+
 # Visibility Demo
 Not always failed
 

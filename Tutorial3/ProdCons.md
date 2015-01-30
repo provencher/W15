@@ -7,7 +7,7 @@
 2. **Consumer**: Takes items out of buffer
 
 ---
-![fit](procons.png)
+![fit](img/procons.png)
 
 ---
 # Advantages
