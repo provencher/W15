@@ -2,7 +2,7 @@
 ---
 ## Mutex = Mutual Exclusive
 
-![inline](mutex.png)
+![inline](img/mutex.png)
 
 Mutex serializes accesses to a critical section
 
@@ -13,7 +13,7 @@ Critical section will be corrupted if executed concurrently by more than one thr
 #[fit] Corrupted means race condition happens
 
 ---
-![](wo_mutex.png)
+![](img/wo_mutex.png)
 
 ---
 ## Solution
@@ -27,7 +27,7 @@ Critical section will be corrupted if executed concurrently by more than one thr
 3. Returns the exclusive token to Manager
 
 ---
-![](wi_mutex.png)
+![](img/wi_mutex.png)
 
 ---
 ## Mutex <-> Critical Section
@@ -38,7 +38,7 @@ Critical section will be corrupted if executed concurrently by more than one thr
 
 ---
 # Critical Section should not be accessed directly
-![right fit](wrap.png)
+![right fit](img/wrap.png)
 
 ---
 # Java Mutex
@@ -88,7 +88,7 @@ import java.util.concurrent.locks.*;
 ---
 # [fit] `synchronized` is a built-in mutex
 ---
-![inline](two_resources.png)
+![inline](img/two_resources.png)
 
 # [fit] What happen if only one mutex is used?
 ---

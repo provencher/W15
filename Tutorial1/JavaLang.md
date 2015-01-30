@@ -20,7 +20,7 @@
 - Cross platform
 
 ---
-![inline](steps.png)
+![inline](img/steps.png)
 
 ---
 # 1. Creating Java source code
