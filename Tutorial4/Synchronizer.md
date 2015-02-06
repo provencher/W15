@@ -123,9 +123,7 @@ public synchronized void acquire() {
 ```java
 public synchronized void acquire() {
     ++permits;
-    if(permits <= 1){
-        notify();
-    }
+    notify();
 }
 ```
 
@@ -147,11 +145,9 @@ public class Semaphore {
         --permit;
     }
 
-    public synchronized void acquire() {
+    public synchronized void release() {
         ++permits;
-        if(permits <= 1){
-            notify();
-        }
+        notify();
     }
 }
 ```

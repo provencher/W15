@@ -16,8 +16,6 @@ public class Semaphore {
 
     public synchronized void release() {
         ++permits;
-        if(permits <= 1){
-            notify();
-        }
+        notify();
     }
 }
