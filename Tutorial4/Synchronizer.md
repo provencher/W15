@@ -1,4 +1,20 @@
-# Semaphore
+# Synchronizer
+
+---
+# Synchronizer
+1. Mutex (Covered)
+2. SpinLock (Today)
+3. Semaphore (Today)
+4. Barrier (Today)
+...
+
+---
+# SpinLock vs Mutex
+SpinLock is similar to Mutex 
+- But Spinlock keeps spinning to get the lock (use CPU cycles)
+- Mutex paused and awaken when lock is available
+
+Modern Implementation: Hybrid
 
 ---
 # Semaphore
@@ -49,7 +65,17 @@ V = Verhoog ('Increment', 'Increase by one').
 ### Except special properties
 
 ---
-# Skeleton
+# Wait() pattern
+```java
+synchronized (obj) {
+    while (<condition does not hold>)
+        obj.wait();
+    // Perform action appropriate to condition
+}
+```
+
+---
+# Implementation Skeleton
 ```java
 public class Semaphore {
     private int permits;
@@ -72,16 +98,6 @@ public class Semaphore {
 # Acquire Requirements
 - Thread-safe
 - Waits until a permit be available
-
----
-# Wait() pattern
-```java
-synchronized (obj) {
-    while (<condition does not hold>)
-        obj.wait();
-    // Perform action appropriate to condition
-}
-```
 
 ---
 # Acquire Impl
@@ -184,8 +200,7 @@ class BoundedQueue<E> {
 
   public BoundedQueue(int size) {
     emptyCount = new Semaphore(size);
-    filledCount = new Semaphore(size);
-    filledCount.acquire(size);
+    filledCount = new Semaphore(0);
   }
 }
 ```
@@ -246,8 +261,7 @@ class BoundedQueue<E> {
   
   public BoundedQueue(int size) throws InterruptedException {
     emptyCount = new Semaphore(size);
-    filledCount = new Semaphore(size);
-    filledCount.acquire(size);
+    filledCount = new Semaphore(0);
   }
 
   public void put(E e) throws InterruptedException {
@@ -267,6 +281,106 @@ class BoundedQueue<E> {
     emptyCount.release();
     return e;
   }
+}
+```
+
+---
+# Revisited
+- Semaphore allows # of concurrent executions
+- Count indicates # of tokens or permits
+- `Acquire|Wait` to take a permit
+- `Release|Signal` to return a permit
+- Mutex is a Semaphore with # of permits = 1
+- Semaphore is not limited to the number of permits it was created with
+
+---
+---
+# Barrier
+Group of executions must come together at a barrier point in order to proceeded
+
+Example:
+
+"Everyone meet at University at 7:00; once you get there, stay there until **all team members shows up**, and then we’ll figure out what we’re doing next."
+
+---
+# JDK CyclicBarrier
+java.util.concurrent.CyclicBarrier
+
+`await()`: Waits until all parties have invoked await on this barrier.
+
+---
+```java
+class Solver {
+final int N;
+final float[][] data;
+final CyclicBarrier barrier;
+
+class Worker implements Runnable {
+ int myRow;
+ Worker(int row) { myRow = row; }
+ public void run() {
+   while (!done()) {
+     processRow(myRow);
+
+     try {
+       barrier.await();
+     } catch (InterruptedException ex) {
+       return;
+     } catch (BrokenBarrierException ex) {
+       return;
+     }
+   }
+ }
+}
+
+public Solver(float[][] matrix) {
+ data = matrix;
+ N = matrix.length;
+ barrier = new CyclicBarrier(N,
+                             new Runnable() {
+                               public void run() {
+                                 mergeRows(...);
+                               }
+                             });
+ for (int i = 0; i < N; ++i)
+   new Thread(new Worker(i)).start();
+
+ waitUntilDone();
+}
+}
+```
+
+---
+# Cellular Automata
+[Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life)
+
+- Elements must be updated iteration by iteration
+- All elements must be updated in iteration N before processing N+1
+
+---
+# Solution
+- Parition elements to groups
+- Execute groups concurrently
+- `await` at barrier then starts new iteration
+
+---
+```java
+public class Barrier {
+    private int elements;
+
+    public Barrier(int elements) {
+        this.elements = elements;
+    }
+
+    public synchronized void await() throws InterruptedException{
+        --elements;
+        if(elements == 0) {
+            notifyAll();
+        }else {
+            while(elements > 0)
+             wait(); 
+        }
+    }
 }
 ```
 

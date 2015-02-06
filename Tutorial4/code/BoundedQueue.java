@@ -9,8 +9,7 @@ class BoundedQueue<E> {
   
   public BoundedQueue(int size) throws InterruptedException {
     emptyCount = new Semaphore(size);
-    filledCount = new Semaphore(size);
-    filledCount.acquire(size);
+    filledCount = new Semaphore(0);
   }
 
   public void put(E e) throws InterruptedException {
