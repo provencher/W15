@@ -5,16 +5,13 @@ public class Barrier {
         this.elements = elements;
     }
 
-    public synchronized void await() {
+    public synchronized void await() throws InterruptedException{
         --elements;
         if(elements == 0) {
             notifyAll();
         }else {
-            while(elements > 0){
-             try{ 
-                    wait(); 
-                } catch(InterruptedException e){ }
-            }
+            while(elements > 0)
+                wait();
         }
     }
 }

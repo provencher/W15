@@ -102,12 +102,10 @@ public class Semaphore {
 ---
 # Acquire Impl
 ```java
-public synchronized void acquire() {
-    while(permits <= 0) {
-        try { 
-            wait(); 
-        } catch(InterruptedException e){}
-    }
+public synchronized void acquire() throws InterruptedException{
+    while(permits <= 0)
+      wait();
+
     --permit;
 }
 ```
@@ -136,12 +134,10 @@ public class Semaphore {
         this.permits = permits;
     }
     
-    public synchronized void acquire() {
-        while(permits <= 0) {
-            try { 
-                wait(); 
-            } catch(InterruptedException e){ }
-        }
+    public synchronized void acquire() throws InterruptedException{
+        while(permits <= 0)
+          wait();
+          
         --permit;
     }
 
