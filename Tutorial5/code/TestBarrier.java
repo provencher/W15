@@ -37,7 +37,7 @@ class Participant implements Runnable {
 
 public class TestBarrier {
     public static void main(String[] args) throws InterruptedException {
-        Barrier barrier = new Barrier(4);
+        Barrier barrier = new SemaphoreBarrier(4);
         Thread a = new Thread(new Participant("A", 0, 1000, barrier));
         Thread b = new Thread(new Participant("B", 2000, 2000, barrier));
         Thread c = new Thread(new Participant("C", 1000, 2000, barrier));

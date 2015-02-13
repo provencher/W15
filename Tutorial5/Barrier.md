@@ -128,4 +128,33 @@ java.util.concurrent.CyclicBarrier
 
 `await()`: Waits until all parties have invoked await on this barrier.
 
+---
+# Barrier using Semaphore
+1. Make a semaphore with count = 0. No one is allowed to cross
+2. When one comes, takes a receipt. If the last receipt signals the semaphore
+3. Acquire semaphore and release immediately
 
+[Page 29(41) - The little book of semaphore](http://greenteapress.com/semaphores/downey08semaphores.pdf)
+
+---
+```java
+public class SemaphoreBarrier {
+    private int receipts;
+    private Semaphore sem;
+    public Barrier(int parties) {
+        this.receipts = parties;
+        sem = new Semaphore(0); //No one allow to cross
+    }
+    public synchronized void await() throws InterruptedException {
+        synchronized(this) {
+            --receipts; //Take receipts
+            if(receipt == 0)
+                sem.signal();
+        }
+        sem.wait();
+        sem.signal();
+    }
+}
+```
+
+---
