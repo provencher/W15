@@ -93,8 +93,8 @@ ProberBlock => Inspects information stack
 
 ---
 # 4. Phase 1 must be completed before phase 2
-- Easiest way is used Barrier class 
-- Call await() before starts phase2
+- Easiest way is used Barrier class
+- You can use semaphore 
 
 ---
 5. All 10 threads must start their PHASE II in order of their TID, i.e. 1, 2, 3, 4 ...
@@ -114,7 +114,7 @@ ProberBlock => Inspects information stack
 
 ---
 # Task5's Solutions
-1. turnTestAndSet() and s2
+1. turnTestAndSet() and s2 
 2. CountUpLatch with `countUp` & `await(n)`
 3. JDK Semaphore with `acquire(n)` & `release(n)`
 
