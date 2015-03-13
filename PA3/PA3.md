@@ -91,5 +91,3 @@ class Adder {
 
 References:
 [http://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html](http://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html)
-
----

@@ -73,6 +73,7 @@ take(){
   acquireLock()
   while(queue.isEmpty) {
     releaseLock()
+    Thread.yield()
     acquireLock()
   }
   queue.remove()
@@ -104,7 +105,7 @@ A condition that thread can
 # wait(condition, lock)
 1. Release lock
 2. Sleep until `condition` is signalled
-3. When awaken up, re-acquire lock again
+3. When awaken up, re-acquire lock again 
 
 ---
 # signal(condition, lock)
@@ -117,7 +118,21 @@ A condition that thread can
 - Wakes up all waiting threads
 
 ---
+# Hoare Monitor
+- Waking up waiting thread immediately
+- Implicitly transfer the lock
+- Awaken thread does not have to check the condition
+- Hard to implement
+
+---
+# Mesa Monitor 
+- Signaling is just a hint
+- Awaken thread must re-acquire lock
+- Awakened thread must re-check condition
+
+---
 # Java Monitor
+- Mesa style
 - Every Java object is Monitor
 - `wait` <-> `wait`
 - `signal` <-> `notify`
@@ -145,5 +160,3 @@ put(e){
 ---
 # Notes
 `wait`, `notify`, `notifyAll` must be called within `synchronized`
-
----
