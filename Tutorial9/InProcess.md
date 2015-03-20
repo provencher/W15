@@ -90,7 +90,7 @@ Reason: java.lang.StackOverflowError
 - C++ (Smart Pointer)
 
 ---
-# OutOffMemory
+# OutOfMemory
 ```java
 class OutOfMemory {
   public static void main(String[] args){
@@ -99,7 +99,7 @@ class OutOfMemory {
   }
 }
 ```
-Exception in thread "main" java.lang.NegativeArraySizeException
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
   at OutOfMemory.main(OutOfMemory.java:4)
 
 ---
