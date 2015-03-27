@@ -48,7 +48,7 @@
 
 ---
 # Scheduling Goals
-1. Maximine "throughput"
+1. Maximize "throughput"
 2. Minimize "turnaround time"
 3. Minimize "response time"
 
@@ -57,8 +57,8 @@ For example, to guarantee that all users get good service, we may want to minimi
 
 ---
 # Can reach goal if
-1. Maximine CPU utilization
-2. Maximine I/O utilization
+1. Maximize CPU utilization
+2. Maximize I/O utilization
 
 **Notes**
 1. Overlap I/O & computation => increase utilization
@@ -103,7 +103,7 @@ Schedule the job whose next CPU burst is the shortest
 Minimize waiting time for set of given jobs
 
 # Limitation of SJF
-- Doesn’t always minimize average turnaround time
+- Doesn't always minimize average turnaround time
 - Can lead to unfairness or starvation
 
 ---
@@ -166,11 +166,11 @@ Happens when save current execution, restore previous execution
 
 ---
 # Why do we write multithreading applications
-1. Faster. (No, not really)
+1. Faster. (It depends)
 2. More responsive. (Yes. When do you need it)
 
 ---
-# Multithread can slow down
+# Multithreading can slow down
 Example: 
 **1 CPU, 2 threads slower than 1 CPU, 1 thread**
 
@@ -179,6 +179,14 @@ Reasons:
 2. Lock
 
 ---
+# Multithreading with I/O overlap
+- Read 100 files, convert and store back
+- Read/Write file do not use CPU
+- Convert using CPUs
+
+Can make program **faster** even with 1 CPU
+
+---
 # More responsive
-- Response time is reduced with multithreading
-- GUI application requires small responsive time
+- Responsiveness is often enhanced with multithreading
+- GUI application requires responsiveness
